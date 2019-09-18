@@ -1,0 +1,14 @@
+{
+    "id": "game-dice",
+    "name": "Dice game",
+    "description": "This add-on implements Dice game.",
+    "providers": [
+        "Packages\\GameDice\\Providers\\PackageServiceProvider"
+    ],
+    "base_path": "game-dice",
+    "source_path": "src",
+    "namespace": "Packages\\GameDice\\",
+    "static": {},
+    "purchase_url": "https://1.envato.market/05MqJ",
+    "min_app_version": "1.9.3"
+}

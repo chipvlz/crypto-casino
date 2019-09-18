@@ -1,0 +1,25 @@
+Video Poker
+-----------
+
+CHANGES HISTORY
+---------------
+v1.1.1 - 13 June 2019
+- Disable access to the game page if 2FA is enabled and not yet passed.
+
+v1.1.0 - 31 May 2019
+- Ability to specify by how much the bet size should be incremented / decremented when +/- buttons are clicked.
+
+v1.0.4 - 20 Apr 2019
+- Bug fix: HTML content is displayed inside the <title> on games pages.
+
+v1.0.3 - 15 Apr 2019
+- Bug fix: the game doesn't work in Firefox.
+
+v1.0.2 - 06 Apr 2019
+- Minor bug fixes.
+
+v1.0.1 - 03 Apr 2019
+- Minor bug fixes.
+
+v1.0.0 - 24 Mar 2019
+- Initial release.

@@ -1,0 +1,7 @@
+American Bingo
+--------------
+
+CHANGES HISTORY
+---------------
+v1.0.0 - 09 August 2019
+- Initial release.

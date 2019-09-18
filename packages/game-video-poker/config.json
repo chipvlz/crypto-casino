@@ -1,0 +1,14 @@
+{
+    "id": "game-video-poker",
+    "name": "Video Poker game",
+    "description": "This add-on implements Video Poker (Jacks or Better) game.",
+    "providers": [
+        "Packages\\GameVideoPoker\\Providers\\PackageServiceProvider"
+    ],
+    "base_path": "game-video-poker",
+    "source_path": "src",
+    "namespace": "Packages\\GameVideoPoker\\",
+    "static": {},
+    "purchase_url": "https://1.envato.market/KGvb9",
+    "min_app_version": "1.9.0"
+}

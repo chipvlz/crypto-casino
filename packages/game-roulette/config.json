@@ -1,0 +1,14 @@
+{
+    "id": "game-roulette",
+    "name": "Roulette game",
+    "description": "This add-on implements Roulette game.",
+    "providers": [
+        "Packages\\GameRoulette\\Providers\\PackageServiceProvider"
+    ],
+    "base_path": "game-roulette",
+    "source_path": "src",
+    "namespace": "Packages\\GameRoulette\\",
+    "static": {},
+    "purchase_url": "https://1.envato.market/NJvL2",
+    "min_app_version": "1.9.0"
+}

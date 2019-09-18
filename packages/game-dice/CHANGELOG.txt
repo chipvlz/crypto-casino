@@ -1,0 +1,25 @@
+Dice
+----
+
+CHANGES HISTORY
+---------------
+v1.1.1 - 23 August 2019
+- Auto play mode: balance stop conditions added.
+
+v1.1.0 - 22 August 2019
+- Auto play mode implemented.
+
+v1.0.4 - 09 August 2019
+- Some minor improvements.
+
+v1.0.3 - 30 July 2019
+- Some minor improvements.
+
+v1.0.2 - 17 June 2019
+- Additional balance validation on the front-end side.
+
+v1.0.1 - 13 June 2019
+- Disable access to the game page if 2FA is enabled and not yet passed.
+
+v1.0.0 - 11 June 2019
+- Initial release.

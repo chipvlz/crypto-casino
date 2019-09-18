@@ -1,0 +1,18 @@
+Roulette
+--------
+
+CHANGES HISTORY
+---------------
+v1.2.1 - 13 June 2019
+- Disable access to the game page if 2FA is enabled and not yet passed.
+
+v1.2.0 - 31 May 2019
+- Ability to specify by how much the bet size should be incremented / decremented when +/- buttons are clicked.
+- Bug fix: 28-29 split bet can not be accepted.
+
+v1.1.0 - 14 May 2019
+- Six line / double street bet added (bet on six consecutive numbers that form two horizontal lines, e.g. 31-32-33-34-35-36).
+- Bug fix: new server hash is not refreshed on the client side (in a browser) after each game.
+
+v1.0.0 - 10 May 2019
+- Initial release.
