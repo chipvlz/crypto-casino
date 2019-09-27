@@ -22,7 +22,7 @@ return [
 	 */
     'accounts' => [
 	    // initial balance in credits when creating a user account
-	    'initial_balance' => env('ACCOUNTS_INITIAL_BALANCE', 1000),
+	    'initial_balance' => env('ACCOUNTS_INITIAL_BALANCE', 0),
     ],
 
     /*

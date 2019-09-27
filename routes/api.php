@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-
+\Illuminate\Support\Facades\Route::post('accounts/increase', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@increaseBalance');
+\Illuminate\Support\Facades\Route::post('accounts/cash-out', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@cashOut');

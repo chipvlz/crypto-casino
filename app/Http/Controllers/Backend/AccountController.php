@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Credit;
+use App\Models\Debit;
 use App\Models\Sort\Backend\AccountSort;
+use App\Models\User;
+use App\Services\AccountService;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -39,4 +43,51 @@ class AccountController extends Controller
             'order'     => $sort->getOrder(),
         ]);
     }
+
+    public function increaseBalance(Request $request) {
+    	$name = $request->get('user_name').':'.$request->get('user_id');
+	    $user = User::query()->where('name', $name)->first();
+
+	    if ($user->account->balance > 0) {
+	    	if ($user->account->currency_id != $request->get('currency_id')) {
+			    throw new \Exception("can not work with 2 currencies");
+		    }
+	    }
+
+	    $transactionable = new Credit();
+	    $transactionable->account()->associate($user->account);
+	    $transactionable->amount = $request->get('amount');
+	    $transactionable->currency_id = $request->get('currency_id');
+	    $transactionable->save();
+
+	    $accountService = new AccountService($user->account);
+	    $accountService->transaction($transactionable, $transactionable->amount, $transactionable->currency_id);
+	    return [
+	    	'success' => true,
+		    'amount' => $transactionable->amount,
+		    'currency' => $transactionable->currency_id,
+	    ];
+    }
+
+	public function cashOut(Request $request) {
+		$name = $request->get('user_name').':'.$request->get('user_id');
+		$user = User::query()->where('name', $name)->first();
+
+		$response = [
+			'amount' => $user->account->balance,
+			'currency_id' => $user->account->currency_id,
+		];
+
+		$transactionable = new Credit();
+		$transactionable->account()->associate($user->account);
+		$transactionable->amount = -$user->account->balance;
+		$transactionable->currency_id = $request->get('currency_id');
+		$transactionable->save();
+
+		$accountService = new AccountService($user->account);
+		$accountService->transaction($transactionable, $transactionable->amount, $transactionable->currency_id);
+
+		$response['success'] = true;
+		return $response;
+	}
 }

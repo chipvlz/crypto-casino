@@ -18,6 +18,7 @@ class CreateCreditsTable extends Migration
             $table->increments('id');
             $table->integer('account_id')->unsigned();
             $table->decimal('amount', 20, 2);
+	        $table->integer('currency_id', false, true)->nullable();
             $table->timestamps();
             // foreign keys
             $table->foreign('account_id')->references('id')->on('accounts')->onUpdate('cascade')->onDelete('cascade');

@@ -20,6 +20,7 @@ class CreateGamesTable extends Migration
             $table->morphs('gameable', 'game_morph'); // polymorphic relation (index is created automatically)
             $table->decimal('bet', 16, 2);
             $table->decimal('win', 16, 2);
+            $table->integer('currency_id', null, null)->nullable();
             $table->string('result', 100)->nullable();
             $table->timestamps();
             // foreign keys

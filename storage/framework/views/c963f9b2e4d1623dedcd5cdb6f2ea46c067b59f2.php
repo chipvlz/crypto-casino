@@ -7,9 +7,8 @@
     <?php echo $__env->renderWhen(config('settings.gtm_container_id'), 'frontend.includes.gtm-body', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path'))); ?>
 
     <div id="app">
-
         <div class="container-fluid bg-primary">
-            <?php echo $__env->make('frontend.includes.header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
         </div>
 
         <div class="container">
@@ -37,7 +36,7 @@
 
         </div>
 
-        <?php echo $__env->first(['frontend.includes.footer-udf', 'frontend.includes.footer'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
 
     </div>
 

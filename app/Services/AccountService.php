@@ -23,21 +23,26 @@ class AccountService
      * @param Model $transactionable
      * @param float $amount
      */
-    public function transaction(Model $transactionable, float $amount)
+    public function transaction(Model $transactionable, float $amount, $c_id = null)
     {
         if ($amount != 0 && abs($amount) >= 0.01) {
-            DB::transaction(function () use ($transactionable, $amount) {
+            DB::transaction(function () use ($transactionable, $amount, $c_id) {
                 // update account balance
                 if ($amount > 0)
                     $this->account->increment('balance', $amount);
                 else
                     $this->account->decrement('balance', abs($amount));
 
+                $this->account->update([
+                	'currency_id' => $c_id,
+                ]);
+
                 // create account transaction
                 $transaction = new AccountTransaction();
                 $transaction->account()->associate($this->account);
                 $transaction->amount = $amount;
                 $transaction->balance = $this->account->balance;
+                $transaction->currency_id = $c_id;
                 $transactionable->transaction()->save($transaction);
             });
         }

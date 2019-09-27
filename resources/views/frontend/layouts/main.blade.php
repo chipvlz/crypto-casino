@@ -7,9 +7,8 @@
     @includeWhen(config('settings.gtm_container_id'), 'frontend.includes.gtm-body')
 
     <div id="app">
-
         <div class="container-fluid bg-primary">
-            @include('frontend.includes.header')
+{{--            @include('frontend.includes.header')--}}
         </div>
 
         <div class="container">
@@ -37,7 +36,7 @@
 
         </div>
 
-        @includeFirst(['frontend.includes.footer-udf', 'frontend.includes.footer'])
+        {{--@includeFirst(['frontend.includes.footer-udf', 'frontend.includes.footer'])--}}
 
     </div>
 

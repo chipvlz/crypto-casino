@@ -41,7 +41,6 @@ class PageController extends Controller
     public function display($slug)
     {
         $view = 'frontend.pages.static.' . $slug;
-
         return view()->exists($view . '-udf') // try to load user defined view first
             ? view($view . '-udf')
             : (view()->exists($view) // load system static page

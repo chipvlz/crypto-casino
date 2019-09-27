@@ -31,6 +31,10 @@ class Account extends Model
         'balance' => 'float'
     ];
 
+    protected $fillable = [
+    	'currency_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

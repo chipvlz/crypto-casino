@@ -19,6 +19,7 @@ class CreateAccountsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('code', 50)->unique();
             $table->decimal('balance', 20, 2)->default(0);
+            $table->integer('currency_id', false, true)->nullable();
             $table->timestamps();
             // foreign keys
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

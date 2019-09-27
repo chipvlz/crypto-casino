@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ProxyAuthenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -14,7 +15,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-//        \App\Http\Middleware\CheckForMaintenanceMode::class,
+        \App\Http\Middleware\CheckForMaintenanceMode::class,
+//	    ProxyAuthenticate::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
@@ -77,6 +79,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewarePriority = [
+	    ProxyAuthenticate::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         \App\Http\Middleware\Authenticate::class,

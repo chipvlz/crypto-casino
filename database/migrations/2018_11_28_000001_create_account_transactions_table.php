@@ -19,6 +19,7 @@ class CreateAccountTransactionsTable extends Migration
             $table->integer('account_id')->unsigned();
             $table->decimal('amount', 20, 2);
             $table->decimal('balance', 20, 2);
+	        $table->integer('currency_id', false, true)->nullable();
             $table->morphs('transactionable', 'account_transactions_morph'); // polymorphic relation (index is created automatically)
             $table->timestamps();
             // foreign keys
