@@ -1,0 +1,23 @@
+image: php:latest
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - vendor
+    - node_modules
+
+before_script:
+   - echo "$SSH_REMOTE_HOST" > ~/.ssh/known_hosts
+   - chmod 644 ~/.ssh/known_hosts
+
+sync_production:
+  stage: deploy
+  only: [master]
+  script:
+    - echo $DOCKER_ENV | base64 -d > $CI_PROJECT_DIR/docker/.env
+    - echo $LARAVEL_ENV | base64 -d > $CI_PROJECT_DIR/.env
+    - ls -la $CI_PROJECT_DIR
+    - rsync -av -e "ssh -o StrictHostKeyChecking=no" --exclude '.git/*' $CI_PROJECT_DIR/ $SSH_REMOTE_USER@$SSH_REMOTE_HOST:$SSH_REMOTE_PATH
