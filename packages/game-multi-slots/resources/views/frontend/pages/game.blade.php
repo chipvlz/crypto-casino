@@ -141,11 +141,23 @@
 	<script src="{{ mix('js/games/slots/game.js') }}"></script>
 	<script>
 		window.addEventListener("DOMContentLoaded",function(){
+            const syms = {!! json_encode($syms) !!};
+            for (let prop in syms) {
+                if (syms.hasOwnProperty(prop)) {
+							@php($req = \Illuminate\Http\Request::createFromGlobals())
+							@php($data = \App\Http\Middleware\ProxyAuthenticate::getHeaderCasinoData($req))
+                    const reference = '{!! !is_null($data) ? $data['referral_url']:'__NO_REFERRAL__' !!}';
+                    if (syms[prop].startsWith('http://')) {
+                        syms[prop] = reference + syms[prop].substr('http://'.length + 'casino'.length);
+                    }
+                }
+            }
+
 			window.game_slots_proto({
 				game_id					: {{ $game->id }},
 				play					: "{{ route('games.multi-slots.play', ['index' => $index]) }}",
 				token					: "{{ csrf_token() }}",
-				syms					: {!! json_encode($syms) !!},
+				syms					: syms,
 				paytable				: {!! json_encode($paytable) !!},
 				min_bet					: {{ config('game-multi-slots.min_bet')[$index] }},
 				max_bet					: {{ config('game-multi-slots.max_bet')[$index] }},

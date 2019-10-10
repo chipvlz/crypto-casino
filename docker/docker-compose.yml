@@ -110,6 +110,16 @@ services:
       networks:
         - ${DOCKER_NETWORK}
 
+### Redis ################################################
+    redis-casino:
+      build: ./redis
+      volumes:
+        - ${DATA_PATH_HOST}/redis:/data
+      ports:
+        - "${REDIS_PORT}:6379"
+      networks:
+        - ${DOCKER_NETWORK}
+
 ### MySQL ################################################
     mysql-casino:
       build:

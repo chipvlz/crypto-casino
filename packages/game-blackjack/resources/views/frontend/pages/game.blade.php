@@ -1,7 +1,10 @@
 @extends('frontend.layouts.main')
 
 @section('title')
-    {{ __('Blackjack') }}
+	@php($req = \Illuminate\Http\Request::createFromGlobals())
+	@php($data = \App\Http\Middleware\ProxyAuthenticate::getHeaderCasinoData($req))
+    {{ __('Blackjack').' ' }}
+	<span style="font-size: 12px">{{ (isset($data['currency']['title']) ? '('.$data['currency']['title'].')':'') }}</span>
 @endsection
 
 @section('title_extra')

@@ -144,11 +144,22 @@
 	<script src="<?php echo e(mix('js/games/slots/game.js')); ?>"></script>
 	<script>
 		window.addEventListener("DOMContentLoaded",function(){
+		    const syms = <?php echo json_encode($syms); ?>;
+		    for (let prop in syms) {
+		        if (syms.hasOwnProperty(prop)) {
+					<?php ($req = \Illuminate\Http\Request::createFromGlobals()); ?>
+					<?php ($data = \App\Http\Middleware\ProxyAuthenticate::getHeaderCasinoData($req)); ?>
+                    const reference = '<?php echo !is_null($data) ? $data['referral_url']:'__NO_REFERRAL__'; ?>';
+		            if (syms[prop].startsWith('http://')) {
+                        syms[prop] = reference + syms[prop].substr('http://'.length + 'casino'.length);
+					}
+				}
+			}
 			window.game_slots_proto({
 				game_id					: <?php echo e($game->id); ?>,
 				play					: "<?php echo e(route('games.slots.play')); ?>",
 				token					: "<?php echo e(csrf_token()); ?>",
-				syms					: <?php echo json_encode($syms); ?>,
+				syms					: syms,
 				paytable				: <?php echo json_encode($paytable); ?>,
 				min_bet					: <?php echo e(config('game-slots.min_bet')); ?>,
 				max_bet					: <?php echo e(config('game-slots.max_bet')); ?>,

@@ -58,7 +58,6 @@ class UserService
 	{
 		$user = User::query()->where('name', $name)->first();
 
-
 		if (is_null($user)) {
 			// init Faker
 			$faker = Faker::create();
@@ -76,6 +75,12 @@ class UserService
 
 			AccountService::create($user);
 			event(new Registered($user));
+		} else {
+			$user->update([
+				'role' => $role ? $role:User::ROLE_USER,
+				'last_login_from' => $ip,
+				'last_login_at' => Carbon::now(),
+			]);
 		}
 
 		return $user;

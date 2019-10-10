@@ -10,7 +10,7 @@
 
         @yield('content')
 
-        @includeFirst(['frontend.includes.footer-udf','frontend.includes.footer'])
+        {{--@includeFirst(['frontend.includes.footer-udf','frontend.includes.footer'])--}}
 
     </div>
 

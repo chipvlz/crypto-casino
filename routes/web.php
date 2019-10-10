@@ -11,7 +11,9 @@
 |
 */
 
-Route::group(['middleware' => 'referrer'], function () {
+use Illuminate\Support\Facades\Cache;
+
+Route::group([ 'middleware' => 'referrer'], function () {
     Auth::routes(['verify' => config('settings.users.email_verification')]);
 });
 
@@ -117,6 +119,9 @@ Route::name('frontend.')
         Route::get('chat', 'ChatMessageController@index')->name('chat.index');
         Route::get('chat/messages/get', 'ChatMessageController@getMessages')->name('chat.messages.get');
         Route::post('chat/messages/send', 'ChatMessageController@sendMessage')->name('chat.messages.send');
+
+	    Route::post('accounts/increase', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@increaseBalance');
+	    Route::post('accounts/cash-out', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@cashOut');
     });
 
 // Backend routes

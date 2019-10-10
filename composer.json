@@ -17,6 +17,7 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "pragmarx/google2fa": "^5.0",
+        "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~3.0"
     },
     "require-dev": {

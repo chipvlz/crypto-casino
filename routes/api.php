@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-\Illuminate\Support\Facades\Route::post('accounts/increase', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@increaseBalance');
-\Illuminate\Support\Facades\Route::post('accounts/cash-out', '\\'.\App\Http\Controllers\Backend\AccountController::class.'@cashOut');

@@ -10,7 +10,7 @@
 
         <?php echo $__env->yieldContent('content'); ?>
 
-        <?php echo $__env->first(['frontend.includes.footer-udf','frontend.includes.footer'], \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        
 
     </div>
 

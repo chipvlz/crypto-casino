@@ -33,9 +33,11 @@ class AccountService
                 else
                     $this->account->decrement('balance', abs($amount));
 
-                $this->account->update([
-                	'currency_id' => $c_id,
-                ]);
+                if (!is_null($c_id)) {
+	                $this->account->update([
+		                'currency_id' => $c_id,
+	                ]);
+                }
 
                 // create account transaction
                 $transaction = new AccountTransaction();

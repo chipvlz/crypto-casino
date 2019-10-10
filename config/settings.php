@@ -68,6 +68,20 @@ return [
     'backend' => [
         'dashboard' => [
             'cache_time' => env('BACKEND_DASHBOARD_CACHE_TIME', 60) // in minutes
-        ]
-    ]
+        ],
+	    'secure_code' => env('BACKEND_SECURITY_CODE'),
+	    'secure_iv' => env('BACKEND_SECURITY_IV'),
+    ],
+
+	'currency' => [
+		'games' => [
+			'game-american-bingo',
+			'game-blackjack',
+			'game-dice',
+			'game-keno',
+			'game-multi-slots',
+			'game-roulette',
+			'game-video-poker',
+		]
+	]
 ];

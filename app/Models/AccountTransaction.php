@@ -12,6 +12,7 @@ class AccountTransaction extends Model
     protected $formats = [
         'amount' => 'decimal',
         'balance' => 'decimal',
+	    'currency_id' => 'integer',
     ];
 
     public function transactionable()

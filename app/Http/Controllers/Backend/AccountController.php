@@ -10,6 +10,7 @@ use App\Models\Sort\Backend\AccountSort;
 use App\Models\User;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -45,12 +46,11 @@ class AccountController extends Controller
     }
 
     public function increaseBalance(Request $request) {
-    	$name = $request->get('user_name').':'.$request->get('user_id');
-	    $user = User::query()->where('name', $name)->first();
+	    $user = Auth::user();
 
-	    if ($user->account->balance > 0) {
+	    if (floatval($user->account->balance) > 0) {
 	    	if ($user->account->currency_id != $request->get('currency_id')) {
-			    throw new \Exception("can not work with 2 currencies");
+			    throw new \Exception("can not work with 2 currencies ".$user->account->balance.' > '.$user->account->currency_id.'  '.$request->get('currency_id'));
 		    }
 	    }
 
@@ -70,8 +70,7 @@ class AccountController extends Controller
     }
 
 	public function cashOut(Request $request) {
-		$name = $request->get('user_name').':'.$request->get('user_id');
-		$user = User::query()->where('name', $name)->first();
+		$user = Auth::user();
 
 		$response = [
 			'amount' => $user->account->balance,
@@ -81,7 +80,7 @@ class AccountController extends Controller
 		$transactionable = new Credit();
 		$transactionable->account()->associate($user->account);
 		$transactionable->amount = -$user->account->balance;
-		$transactionable->currency_id = $request->get('currency_id');
+		$transactionable->currency_id = $user->account->currency_id;
 		$transactionable->save();
 
 		$accountService = new AccountService($user->account);
