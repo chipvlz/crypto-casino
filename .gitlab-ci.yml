@@ -6,7 +6,6 @@ stages:
 
 cache:
   paths:
-    - vendor
     - node_modules
 
 before_script:
