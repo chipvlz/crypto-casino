@@ -40,7 +40,7 @@ class Game extends Model
         'win' => 'float',
     ];
 
-    protected $appends = ['server_hash'];
+    protected $appends = ['server_hash', 'title'];
 
     public function account()
     {

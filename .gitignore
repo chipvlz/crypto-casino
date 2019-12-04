@@ -3,4 +3,5 @@
 .env
 .env.install
 
-/storage/framework/views/*
+/storage/framework/*
+/storage/logs/*

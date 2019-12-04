@@ -87,6 +87,8 @@ class AccountController extends Controller
 		$accountService->transaction($transactionable, $transactionable->amount, $transactionable->currency_id);
 
 		$response['success'] = true;
+		$response['transactions'] = $user->account->transactions()->where('transactionable_type', 'App\\Models\\Game')->with(['transactionable', 'transactionable.gameable'])->get();
+
 		return $response;
 	}
 }

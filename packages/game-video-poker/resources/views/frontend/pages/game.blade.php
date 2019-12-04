@@ -2,6 +2,9 @@
 
 @section('title')
     {{ __('Video Poker') }}
+	@php($req = \Illuminate\Http\Request::createFromGlobals())
+	@php($data = \App\Http\Middleware\ProxyAuthenticate::getHeaderCasinoData($req))
+	<span style="font-size: 12px">{{ (isset($data['currency']['title']) ? '('.$data['currency']['title'].')':'') }}</span>
 @endsection
 
 @section('title_extra')
