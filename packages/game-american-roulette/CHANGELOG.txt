@@ -1,0 +1,7 @@
+American Roulette
+-----------------
+
+CHANGES HISTORY
+---------------
+v1.0.0 - 24 October 2019
+- Initial release.

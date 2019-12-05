@@ -16,6 +16,7 @@ class LicenseController extends Controller
         try {
             $licenseService = new LicenseService();
             $result = $licenseService->register($request->code, $request->email);
+            dd($result);
         } catch(\Exception $e) {
             return back()->withInput()->withErrors($e->getMessage());
         }

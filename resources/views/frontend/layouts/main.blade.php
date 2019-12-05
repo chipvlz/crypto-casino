@@ -8,7 +8,7 @@
 
     <div id="app">
         <div class="container-fluid bg-primary">
-{{--            @include('frontend.includes.header')--}}
+            @include('frontend.includes.header')
         </div>
 
         <div class="container">

@@ -1,0 +1,7 @@
+Lucky Wheel
+-----------
+
+CHANGES HISTORY
+---------------
+v1.0.0 - 06 November 2019
+- Initial release.

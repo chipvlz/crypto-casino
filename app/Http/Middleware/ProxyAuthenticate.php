@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use App\Models\User;
 use App\Services\AccountService;
+use App\Services\DotEnvService;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -16,6 +17,7 @@ class ProxyAuthenticate extends Authenticate
 	{
 		$data = self::getHeaderCasinoData($request);
 		if (!is_null($data)) {
+
 			$user_id = $data['user_id'];
 			$user_name = $data['user_name'];
 

@@ -22,7 +22,10 @@ class LicenseService
                 'email' => $email,
                 'domain' => request()->getHost(),
                 'hash' => config('app.hash')
-            ]
+            ],
+	        'curl' => [
+	        	CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4
+	        ]
         ]);
 
         return \GuzzleHttp\json_decode($response->getBody()->getContents());
